@@ -12,7 +12,7 @@ app.get("/sum",(req,res)=>{
     const num1 = Number(req?.query?.num1);
     const num2 = Number(req?.query?.num2);
     
-    res.status(200).json({ input: {num1,num2} ,output:Number(num1)+Number(num2)||0 });
+    res.status(200).json([{ input: {num1,num2} ,output:Number(num1)+Number(num2)||0 }]);
 })
 
 app.get("/",(req,res)=>{
