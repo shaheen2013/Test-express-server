@@ -7,15 +7,29 @@ app.use(express.urlencoded({ extended: true }));
 
 const port = 8000;
 
+
+app.get('/me', function (req, res) {
+    let apiKey = 'api2024';
+    if (apiKey === req.headers.apikey) {
+       res.status(200).json({status:true,message:'Authenticate successfully' });
+        } else {
+         res.status(401).json({ status: false, message: 'Invalid Api Key' });
+        }
+});
+
+
+
+
 app.get("/sum",(req,res)=>{
-    
     const num1 = Number(req?.query?.num1);
     const num2 = Number(req?.query?.num2);
+
+    const data = [{id:1, input: {num1,num2} ,output:Number(num1)+Number(num2)||0 }];
     
-    res.status(200).json([{id:1, input: {num1,num2} ,output:Number(num1)+Number(num2)||0 }]);
+    res.status(200).json(data);
 })
 
-app.get("/",(req,res)=>{
+app.get("/",(_,res)=>{
     res.status(200).json({ msg: "Welcome to test" });
 })
 
