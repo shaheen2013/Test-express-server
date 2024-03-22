@@ -23,8 +23,17 @@ app.get('/me', function (req, res) {
 app.get("/sum",(req,res)=>{
     const num1 = Number(req?.query?.num1);
     const num2 = Number(req?.query?.num2);
+    const dataType = req?.query?.dataType
 
-    const data = [{id:1, input: {num1,num2} ,output:Number(num1)+Number(num2)||0 }];
+    let data;
+
+    if(dataType==="object"){
+        data = {id:1, input: {num1,num2} ,output:Number(num1)+Number(num2)||0 }
+        res.status(200).json(data);
+    }
+    else{
+        data = [{id:1, input: {num1,num2} ,output:Number(num1)+Number(num2)||0 }]
+    }
     
     res.status(200).json(data);
 })
