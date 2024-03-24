@@ -65,10 +65,11 @@ app.get("/sum", async (req, res) => {
     };
 
     try {
-      const zapierWebhookUrl = `https://hooks.zapier.com/hooks/catch/18308677/3xijgiy/?num1=${num1}&num2=${num2}`;
+      const zapierWebhookUrl = `https://hooks.zapier.com/hooks/catch/18308677/3x8w9zm/`;
       const result = await axios.post(zapierWebhookUrl, {
         data,
       });
+      console.log({ result });
       res.status(200).json(data);
     } catch (error) {
       res.status(200).json({ ...data, error });
