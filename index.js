@@ -70,7 +70,7 @@ app.get("/sum", async (req, res) => {
     });
     console.log({ result });
 
-    if (result?.status === "success") res.status(200).json(data);
+    res.status(200).json(data);
   } else {
     data = [
       {
