@@ -37,6 +37,11 @@ app.get("/weather", async (req, res) => {
       }
     );
 
+    const zapierWebhookUrl = `https://hooks.zapier.com/hooks/catch/18308677/3x8hfin/`;
+    await axios.post(zapierWebhookUrl, {
+      data: result?.data,
+    });
+
     res.status(200).json(result?.data);
   } catch (error) {
     res.status(200).json({ message: "location not found" });
