@@ -32,7 +32,7 @@ app.get("/weather", async (req, res) => {
         },
         params: {
           key: "985df3cfb735405390f105505242303",
-          q: req?.query?.city,
+          q: req?.query?.city || req?.query?.latlon,
         },
       }
     );
